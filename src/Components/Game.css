@@ -605,5 +605,17 @@ display: none;
 overflow: visible;
 }
 
+.bg-danger {
+  background-color: #047717 !important;
+  height: 100%;
+  border: 3px solid rgb(100, 100, 100);
+  
+}
+  
+.undefined{
+  background-color: #0632c2 !important;
+  border: 3px solid rgb(100, 100, 100);
+}
+
 
 

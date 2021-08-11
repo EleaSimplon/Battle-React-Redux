@@ -11,3 +11,101 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.monsterName {
+  color: #fff;
+  font-size: 2em;
+}
+
+.card-title {
+  color: #fff;
+  font-size: 1.5em;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p, h5 {
+  text-align: center;
+}
+
+.img-fluid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border: gold 10px ridge;
+}
+
+.imgPlayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.playerCard {
+  width: 39rem;
+  margin: auto;
+  background-color: #fff;
+  margin-bottom: 2rem;
+}
+
+.playerName {
+  color: rgb(0, 0, 0);
+  font-size: 2em;
+  text-align: center;
+}
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-title{
+  color: white;
+  font-size: 1.5em;
+}
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+}
+
+.imgPlayer{
+  border-radius: 50%;
+  height: auto;
+  border: gold 10px ridge;
+ 
+}
+
+
+.progressBarBoss{
+  width: 600px !important;
+}
+
+.hit{
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  /* background-image: url("../hit.jpg"); */
+  background-size: cover;
+}
+
+.container-fluid .row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
