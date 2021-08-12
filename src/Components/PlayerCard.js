@@ -1,17 +1,16 @@
 import React from 'react';
 import ButtonCapacity from './ButtonCapacity';
 import ProgressBar from './ProgressBar';
+import Power from './Power';
+import ManaReload from './ManaReload';
 import { connect } from 'react-redux';
-
-
-
 
 const mapStateToProps = (state, ownProps) => {
     return { 
         players: state.players,
         props: ownProps
     };
-  };
+};
 
 const PlayerCardConnect = ({players, props}) => {
     return (
@@ -28,6 +27,8 @@ const PlayerCardConnect = ({players, props}) => {
                     <div className="row ">
                         <div >
                             <ButtonCapacity player={props.player} />
+                            <Power player={props.player} />
+                            <ManaReload player={props.player} />
                         </div>
                     </div >
                 </div >

@@ -33,7 +33,7 @@ const MonsterConnect = ({ monster }) => (
 			</div>
 		</div>
 		{ monster.pv <= 0 &&
-		alert("il est mort")
+		alert("LE BIG BOSS EST MORT !!!")
 		}
 	</section>
 )

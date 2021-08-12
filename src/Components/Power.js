@@ -1,21 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { hitMonster, hitBack, increment, resetPlayed} from '../actions';
+import { hitMonster, increment, resetPlayed, hyperHit } from '../actions';
 
 
 const mapDispatchToProps = (dispatch) => {
     return {
        hitMonsters: (payload) => dispatch (hitMonster(payload)), //DISPATCH TO KEEP IMMUALIBILITE (= NE CHANGE PAS)
-       hitBacks: (payload) => dispatch (hitBack(payload)),
        resetPlayersTurn: (payload) => dispatch(resetPlayed(payload)),
+       hyperHits: (payload) => dispatch(hyperHit(payload)),
        CounterIncrement: () => dispatch(increment())
     };
 }
  
-const ButtonCapacityConnect = ({players, countPlayerTurn, CounterIncrement,     resetPlayersTurn, hitMonsters, hitBacks, props, monster}) => { 
+const PowerConnect = ({players, countPlayerTurn, CounterIncrement, resetPlayersTurn, hitMonsters, props, monster, hyperHits }) => { 
+
     const combat = () => {
-        hitMonsters(-10)
-        hitBacks({degat:-15, id:props.player.id})
+        hitMonsters(-30)
+        hyperHits({mana : -10, id:props.player.id})
         CounterIncrement();
 
         console.log('aie !')
@@ -31,18 +32,18 @@ const ButtonCapacityConnect = ({players, countPlayerTurn, CounterIncrement,     
         if ((props.player.played) || (props.player.pv === 0) || (monster.pv <= 0)) {
             return (
                 <button disabled={true} type="button" onClick={() => combat()} className="hit btn btn-success material-tooltip-main">
-                    <i className="fas fa-bomb"></i> RELOAD
-                    <i className="fas fa-fire-alt"></i>
-                </button>
+                <i className="fas fa-bomb"></i> RELOAD
+                <i className="fas fa-fire-alt"></i>
+            </button>
             )
         } 
     
         else {
             return (
-                <button type="button" onClick={() => combat()} className="hit btn btn-success material-tooltip-main ">
-                    <i className="fas fa-bomb"></i> HIT THE BOSS
-                    <i className="fas fa-fire-alt"></i>
-                </button>
+                 <button type="button" onClick={() => combat()} className="hit btn btn-success material-tooltip-main ">
+                 <i className="fas fa-bomb"></i> HYPER POWER
+                 <i className="fas fa-fire-alt"></i>
+             </button>
             )
         }
     }
@@ -61,4 +62,4 @@ const mapStateToProps = (state, props) => {
 
 // UNE PARENTHESE POUR PROPS + UNE STATE
 
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonCapacityConnect);
+export default connect(mapStateToProps, mapDispatchToProps)(PowerConnect);

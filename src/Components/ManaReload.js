@@ -1,23 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { hitMonster, hitBack, increment, resetPlayed} from '../actions';
+import { increment, resetPlayed, ManaReload } from '../actions';
 
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       hitMonsters: (payload) => dispatch (hitMonster(payload)), //DISPATCH TO KEEP IMMUALIBILITE (= NE CHANGE PAS)
-       hitBacks: (payload) => dispatch (hitBack(payload)),
        resetPlayersTurn: (payload) => dispatch(resetPlayed(payload)),
+       ManaReloads: (payload) => dispatch(ManaReload(payload)),
        CounterIncrement: () => dispatch(increment())
     };
 }
  
-const ButtonCapacityConnect = ({players, countPlayerTurn, CounterIncrement,     resetPlayersTurn, hitMonsters, hitBacks, props, monster}) => { 
-    const combat = () => {
-        hitMonsters(-10)
-        hitBacks({degat:-15, id:props.player.id})
-        CounterIncrement();
+const ManaConnect = ({players, countPlayerTurn, CounterIncrement, resetPlayersTurn, props, monster, ManaReloads }) => { 
 
+    const combat = () => {
+        ManaReloads({mana : +10, id:props.player.id})
+        CounterIncrement();
         console.log('aie !')
     }
 
@@ -28,21 +26,21 @@ const ButtonCapacityConnect = ({players, countPlayerTurn, CounterIncrement,     
     }
 
     function displayButton () {
-        if ((props.player.played) || (props.player.pv === 0) || (monster.pv <= 0)) {
+        if ((props.player.played) || (props.player.pv === 0) || (monster.pv <= 0) || (props.player.mana === 30)) {
             return (
                 <button disabled={true} type="button" onClick={() => combat()} className="hit btn btn-success material-tooltip-main">
-                    <i className="fas fa-bomb"></i> RELOAD
-                    <i className="fas fa-fire-alt"></i>
-                </button>
+                <i className="fas fa-bomb"></i> MANA MAX
+                <i className="fas fa-fire-alt"></i>
+            </button>
             )
         } 
     
         else {
             return (
-                <button type="button" onClick={() => combat()} className="hit btn btn-success material-tooltip-main ">
-                    <i className="fas fa-bomb"></i> HIT THE BOSS
-                    <i className="fas fa-fire-alt"></i>
-                </button>
+                 <button type="button" onClick={() => combat()} className="hit btn btn-success material-tooltip-main ">
+                 <i className="fas fa-bomb"></i> RELOAD MANA
+                 <i className="fas fa-fire-alt"></i>
+             </button>
             )
         }
     }
@@ -61,4 +59,4 @@ const mapStateToProps = (state, props) => {
 
 // UNE PARENTHESE POUR PROPS + UNE STATE
 
-export default connect(mapStateToProps, mapDispatchToProps)(ButtonCapacityConnect);
+export default connect(mapStateToProps, mapDispatchToProps)(ManaConnect);
